@@ -17,7 +17,7 @@ export default function Index() {
       <p>Hopefully this is a bit easier!</p>
     { Object.keys(offers).map(category => {
       return <div className="section">
-        <h2 className="subtitle">{category}</h2>
+        <h2 className="subtitle catagory">{category}</h2>
         <ul>
         { offers[category].map(offer => {
           return <li className="offer">
@@ -51,6 +51,10 @@ export default function Index() {
     }
       </div>
     <style jsx>{`
+      .catagory {
+        font-weight: bold;
+        font-size:1.6em;
+      }
       p {
         padding-bottom: 1em;
 
