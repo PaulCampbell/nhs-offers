@@ -10,11 +10,17 @@ export default function Index() {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
       </Head>
-      <div className="container">
-      <h1 className="title">List of NHS staff offers</h1>
-      <p>NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products.</p>
-      <p>On the <a href="https://www.england.nhs.uk/coronavirus/publication/list-of-nhs-staff-offers/">NHS Website</a>, they&apos;re <a href="https://www.england.nhs.uk/coronavirus/wp-content/uploads/sites/52/2020/03/NHS-Freebies-FTI-Spreadsheet-27.03.20.xlsx">hidden away in an excel document</a>, which isn&apos;t great if you want to check it quickly from your phone or whatever.</p>
-      <p>Hopefully this is a bit easier!</p>
+      <section className="hero is-info">
+    <div class="hero-body">
+      <div className="container ">
+        <h1 className="title">NHS staff offers</h1>
+        <p>NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products.</p>
+        <p>On the <a href="https://www.england.nhs.uk/coronavirus/publication/list-of-nhs-staff-offers/">NHS Website</a>, they&apos;re <a href="https://www.england.nhs.uk/coronavirus/wp-content/uploads/sites/52/2020/03/NHS-Freebies-FTI-Spreadsheet-27.03.20.xlsx">hidden away in an excel document</a>, which isn&apos;t great if you want to check it quickly from your phone or whatever.</p>
+        <p>Hopefully this is a bit easier!</p>
+      </div>
+    </div>
+    </section>
+    <div className="container">
     { Object.keys(offers).map(category => {
       return <div className="section">
         <h2 className="subtitle catagory">{category}</h2>
@@ -49,8 +55,20 @@ export default function Index() {
       </div>
     })
     }
+      <footer className="footer">
+        <div className="content has-text-centered">
+          <p>
+            <strong>Thanks NHS Folks!</strong>
+          </p>
+        <p>And nice one all the companies above for giving some discounts to those guys!</p>
+        </div>
+      </footer>
       </div>
     <style jsx>{`
+      .hero a {
+        color: white;
+        text-decoration: underline;
+      }
       .catagory {
         font-weight: bold;
         font-size:1.6em;
