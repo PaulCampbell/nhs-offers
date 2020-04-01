@@ -20,7 +20,14 @@ export default function Index() {
             <p>{offer.region} { offer.subRegion ? <span> - {offer.subRegion}</span> : null }</p>
             <h3>Details</h3>
             <p>{offer.details}</p>
-
+            <h3>Access</h3>
+            <p>{offer.access}</p>
+            { offer.terms ?
+              <div>
+                <h3>Terms</h3>
+                <p>{offer.terms}</p>
+              </div>
+            : null }
           </li>
         })
         }
