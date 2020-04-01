@@ -17,7 +17,7 @@ export default function Index() {
             { offer.link ? <a href={offer.link}>{offer.organisation} </a> : <span>{offer.organisation}</span> } - <small>{offer.category}</small>
             </h2>
             <h3>Location</h3>
-            <p>{offer.region}</p>
+            <p>{offer.region} { offer.subRegion ? <span> - {offer.subRegion}</span> : null }</p>
             <h3>Details</h3>
             <p>{offer.details}</p>
 
