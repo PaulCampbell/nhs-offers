@@ -14,8 +14,10 @@ export default function Index() {
         { offers[category].map(offer => {
           return <li>
             <h2>
-            {offer.organisation} - <small>{offer.category}</small>
+            { offer.link ? <a href={offer.link}>{offer.organisation} </a> : <span>{offer.organisation}</span> } - <small>{offer.category}</small>
             </h2>
+            <h3>Location</h3>
+            <p>{offer.region}</p>
             <h3>Details</h3>
             <p>{offer.details}</p>
 
