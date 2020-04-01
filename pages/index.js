@@ -60,7 +60,7 @@ export default function Index() {
           <p>
             <strong>Thanks NHS Folks!</strong>
           </p>
-        <p>And nice one all the companies above for giving some discounts to those guys!</p>
+        <p>And nice one all the companies above for giving some discounts to those guys.</p>
         </div>
       </footer>
       </div>
