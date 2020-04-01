@@ -84,6 +84,9 @@ export default function Index() {
         display:block;
         padding-bottom: 1em;
       }
+      .offer h2 {
+        font-weight:bold;
+      }
       .offer h3 {
         display:inline-block;
         font-weight:bold;
