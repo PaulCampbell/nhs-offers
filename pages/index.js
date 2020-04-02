@@ -10,6 +10,7 @@ export default function Index() {
     <div>
       <Head>
         <title>NHS Staff Offers</title>
+        <meta name="description" content="NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products."></meta>
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="NHS staff offers and discounts" />
         <meta name="twitter:description" content="NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products." />
@@ -62,19 +63,21 @@ export default function Index() {
     </div>
 
     { Object.keys(offers).filter(category => categoryFilter ? categoryFilter === category : true  ).map(category => {
-        return <div className="section" key={category}>
-        <h2 className="subtitle catagory">{category}</h2>
+        return <div className="panel" key={category}>
+        <h2 className="panel-heading category">{category}</h2>
         <ul>
         { filterResults(offers[category], searchQuery).length === 0 ?
           <span>No Results</span>
           : filterResults(offers[category], searchQuery).map(offer => {
-          return <li className="offer">
+          return <li className="offer is-paddingless">
+            <div className="card-content">
             <h2 className="subtitle">
             { offer.link ?
              <a href={offer.link}>{offer.organisation}{" "}
                <img
                  height="16"
                  width="16"
+                 alt={`${offer.organisation} favicon`}
                  src={`http://www.google.com/s2/favicons?domain=${offer.link}`}
                />
              </a> : <span>{offer.organisation}</span> } - <small>{offer.category}</small>
@@ -96,6 +99,7 @@ export default function Index() {
                 <span>{offer.terms}</span>
               </div>
             : null }
+            </div>
           </div>
           </li>
         })
@@ -104,21 +108,23 @@ export default function Index() {
         </div>
       })
     }
-      <footer className="footer">
+    </div>
+    <footer className="footer">
+      <div className="container">
         <div className="content has-text-centered">
           <p>
             <strong>Thanks NHS Folks!</strong>
           </p>
-        <p>And nice one all the companies above for giving some discounts to those guys.</p>
+          <p>And nice one all the companies above for giving some discounts to those guys.</p>
         </div>
-      </footer>
       </div>
+    </footer>
     <style jsx>{`
       .hero a {
         color: white;
         text-decoration: underline;
       }
-      .catagory {
+      .category {
         font-weight: bold;
         font-size:1.6em;
       }
