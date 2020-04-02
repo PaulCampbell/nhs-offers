@@ -3,10 +3,9 @@ import Head from 'next/head'
 const offers = require('../offers.js')
 
 export default function Index() {
-  const [filter, setFilter]= useState(null);
-  function filterOffers(catagory) {
-    setFilter(catagory)
-  }
+  const [categoryFilter, setCategory]= useState(null);
+  const [searchQuery, setSearchQuery] = useState(null);
+
   return (
     <div>
       <Head>
@@ -15,7 +14,7 @@ export default function Index() {
         <meta name="twitter:title" content="NHS staff offers and discounts" />
         <meta name="twitter:description" content="NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
       </Head>
       <section className="hero is-info">
@@ -37,19 +36,39 @@ export default function Index() {
     <div className="container">
     <div className="tabs">
       <ul>
-        <li className={!filter ? 'is-active' : null}><a onClick={() => filterOffers(null)}>All</a></li>
+        <li className={!categoryFilter ? 'is-active' : null}><a onClick={() => setCategory(null)}>All</a></li>
         { Object.keys(offers).map(category => {
-          return <li key={`${category}`} className={filter === category ? 'is-active' : null}><a onClick={() => filterOffers(category)}>{category}</a></li>
+          return <li key={category} className={categoryFilter === category ? 'is-active' : null}><a onClick={() => setCategory(category)}>{category}</a></li>
         })
         }
       </ul>
     </div>
-    { Object.keys(offers).filter(category => !filter ? true : filter === category).map(category => {
-      return <div className="section" key={`${category}`}>
+    <div className="section">
+      <h2 className="subtitle">Search</h2>
+      <div class="field">
+        <div class="control has-icons-right">
+          <input
+            name="search"
+            type="text"
+            placeholder="filter results"
+            class="input"
+            onChange={e => setSearchQuery(e.target.value)}
+          />
+          <span class="icon is-small is-right">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    { Object.keys(offers).filter(category => categoryFilter ? categoryFilter === category : true  ).map(category => {
+        return <div className="section" key={category}>
         <h2 className="subtitle catagory">{category}</h2>
         <ul>
-        { offers[category].map(offer => {
-          return <li key={offer.organisation} className="offer">
+        { filterResults(offers[category], searchQuery).length === 0 ?
+          <span>No Results</span>
+          : filterResults(offers[category], searchQuery).map(offer => {
+          return <li className="offer">
             <h2 className="subtitle">
             { offer.link ?
              <a href={offer.link}>{offer.organisation}{" "}
@@ -82,8 +101,8 @@ export default function Index() {
         })
         }
       </ul>
-      </div>
-    })
+        </div>
+      })
     }
       <footer className="footer">
         <div className="content has-text-centered">
@@ -138,5 +157,17 @@ export default function Index() {
       }
     `}</style>
     </div>
+  );
+}
+
+function filterResults(offers, query) {
+  if (!query || query === "") {
+    return offers;
+  }
+  return offers.filter(offer =>
+    Object.keys(offer).some(
+      key =>
+        offer[key] && offer[key].toLowerCase().includes(query.toLowerCase())
+    )
   );
 }
