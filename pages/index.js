@@ -21,7 +21,13 @@ export default function Index() {
       <section className="hero is-info">
     <div className="hero-body">
       <div className="container ">
-        <h1 className="title">NHS staff offers</h1>
+        <h1 className="title">
+          <img
+            width="120px"
+            className="logo"
+            src={`https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/NHS-Logo.svg/1280px-NHS-Logo.svg.png`}
+          />
+         staff offers</h1>
         <p>NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products.</p>
         <p>On the <a href="https://www.england.nhs.uk/coronavirus/publication/list-of-nhs-staff-offers/">NHS Website</a>, they&apos;re <a href="https://www.england.nhs.uk/coronavirus/wp-content/uploads/sites/52/2020/03/NHS-Freebies-FTI-Spreadsheet-27.03.20.xlsx">hidden away in an excel document</a>, which isn&apos;t great if you want to check it quickly from your phone or whatever.</p>
         <p>Hopefully this is a bit easier!</p>
@@ -45,7 +51,14 @@ export default function Index() {
         { offers[category].map(offer => {
           return <li key={offer.organisation} className="offer">
             <h2 className="subtitle">
-            { offer.link ? <a href={offer.link}>{offer.organisation} </a> : <span>{offer.organisation}</span> } - <small>{offer.category}</small>
+            { offer.link ?
+             <a href={offer.link}>{offer.organisation}{" "}
+               <img
+                 height="16"
+                 width="16"
+                 src={`http://www.google.com/s2/favicons?domain=${offer.link}`}
+               />
+             </a> : <span>{offer.organisation}</span> } - <small>{offer.category}</small>
             </h2>
             <div>
               <h3>Location</h3>
@@ -112,10 +125,17 @@ export default function Index() {
       }
       .offer h3::after {
         content: ":";
-       }
+      }
       .offer p {
         float:left;
-        }
+      }
+      .title {
+        display: flex;
+        align-items: center;
+      }
+      .logo {
+        margin-right: 10px;
+      }
     `}</style>
     </div>
   );
