@@ -1,7 +1,12 @@
+import React, { useState } from 'react'
 import Head from 'next/head'
 const offers = require('../offers.js')
 
 export default function Index() {
+  const [filter, setFilter]= useState(null);
+  function filterOffers(catagory) {
+    setFilter(catagory)
+  }
   return (
     <div>
       <Head>
@@ -24,7 +29,16 @@ export default function Index() {
     </div>
     </section>
     <div className="container">
-    { Object.keys(offers).map(category => {
+    <div className="tabs">
+      <ul>
+        <li className={!filter ? 'is-active' : null}><a onClick={() => filterOffers(null)}>All</a></li>
+        { Object.keys(offers).map(category => {
+          return <li className={filter === category ? 'is-active' : null}><a onClick={() => filterOffers(category)}>{category}</a></li>
+        })
+        }
+      </ul>
+    </div>
+    { Object.keys(offers).filter(category => !filter ? true : filter === category).map(category => {
       return <div className="section">
         <h2 className="subtitle catagory">{category}</h2>
         <ul>
