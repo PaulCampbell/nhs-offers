@@ -11,15 +11,15 @@ export default function Index() {
     <div>
       <Head>
         <title>NHS Staff Offers</title>
-        <meta name="twitter:card" content="summary" /> 
-        <meta name="twitter:title" content="NHS staff offers and discounts" /> 
-        <meta name="twitter:description" content="NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products." /> 
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="NHS staff offers and discounts" />
+        <meta name="twitter:description" content="NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
       </Head>
       <section className="hero is-info">
-    <div class="hero-body">
+    <div className="hero-body">
       <div className="container ">
         <h1 className="title">NHS staff offers</h1>
         <p>NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products.</p>
@@ -33,17 +33,17 @@ export default function Index() {
       <ul>
         <li className={!filter ? 'is-active' : null}><a onClick={() => filterOffers(null)}>All</a></li>
         { Object.keys(offers).map(category => {
-          return <li className={filter === category ? 'is-active' : null}><a onClick={() => filterOffers(category)}>{category}</a></li>
+          return <li key={`${category}`} className={filter === category ? 'is-active' : null}><a onClick={() => filterOffers(category)}>{category}</a></li>
         })
         }
       </ul>
     </div>
     { Object.keys(offers).filter(category => !filter ? true : filter === category).map(category => {
-      return <div className="section">
+      return <div className="section" key={`${category}`}>
         <h2 className="subtitle catagory">{category}</h2>
         <ul>
         { offers[category].map(offer => {
-          return <li className="offer">
+          return <li key={offer.organisation} className="offer">
             <h2 className="subtitle">
             { offer.link ? <a href={offer.link}>{offer.organisation} </a> : <span>{offer.organisation}</span> } - <small>{offer.category}</small>
             </h2>
