@@ -105,15 +105,17 @@ export default function Index() {
         </div>
       })
     }
-      <footer className="footer">
+    </div>
+    <footer className="footer">
+      <div className="container">
         <div className="content has-text-centered">
           <p>
             <strong>Thanks NHS Folks!</strong>
           </p>
-        <p>And nice one all the companies above for giving some discounts to those guys.</p>
+          <p>And nice one all the companies above for giving some discounts to those guys.</p>
         </div>
-      </footer>
       </div>
+    </footer>
     <style jsx>{`
       .hero a {
         color: white;
