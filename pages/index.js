@@ -45,17 +45,17 @@ export default function Index() {
     </div>
     <div className="section">
       <h2 className="subtitle">Search</h2>
-      <div class="field">
-        <div class="control has-icons-right">
+      <div className="field">
+        <div className="control has-icons-right">
           <input
             name="search"
             type="text"
             placeholder="filter results"
-            class="input"
+            className="input"
             onChange={e => setSearchQuery(e.target.value)}
           />
-          <span class="icon is-small is-right">
-            <i class="fas fa-search"></i>
+          <span className="icon is-small is-right">
+            <i className="fas fa-search"></i>
           </span>
         </div>
       </div>
@@ -68,7 +68,7 @@ export default function Index() {
         { filterResults(offers[category], searchQuery).length === 0 ?
           <span>No Results</span>
           : filterResults(offers[category], searchQuery).map(offer => {
-          return <li className="offer">
+          return <li className="offer" key={JSON.stringify(offer)}>
             <h2 className="subtitle">
             { offer.link ?
              <a href={offer.link}>{offer.organisation}{" "}
