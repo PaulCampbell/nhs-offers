@@ -77,6 +77,7 @@ export default function Index() {
                <img
                  height="16"
                  width="16"
+                 alt={`${offer.organisation} favicon`}
                  src={`http://www.google.com/s2/favicons?domain=${offer.link}`}
                />
              </a> : <span>{offer.organisation}</span> } - <small>{offer.category}</small>
