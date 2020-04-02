@@ -18,7 +18,7 @@ export default function Index() {
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
       </Head>
       <section className="hero is-info">
-    <div class="hero-body">
+    <div className="hero-body">
       <div className="container ">
         <h1 className="title">NHS staff offers</h1>
         <p>NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products.</p>
@@ -32,7 +32,7 @@ export default function Index() {
       <ul>
         <li className={!categoryFilter ? 'is-active' : null}><a onClick={() => setCategory(null)}>All</a></li>
         { Object.keys(offers).map(category => {
-          return <li className={categoryFilter === category ? 'is-active' : null}><a onClick={() => setCategory(category)}>{category}</a></li>
+          return <li key={category} className={categoryFilter === category ? 'is-active' : null}><a onClick={() => setCategory(category)}>{category}</a></li>
         })
         }
       </ul>
@@ -56,7 +56,7 @@ export default function Index() {
     </div>
 
     { Object.keys(offers).filter(category => categoryFilter ? categoryFilter === category : true  ).map(category => {
-        return <div className="section">
+        return <div className="section" key={category}>
         <h2 className="subtitle catagory">{category}</h2>
         <ul>
         { filterResults(offers[category], searchQuery).length === 0 ?
