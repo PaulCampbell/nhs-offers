@@ -10,6 +10,7 @@ export default function Index() {
     <div>
       <Head>
         <title>NHS Staff Offers</title>
+        <meta name="description" content="NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products."></meta>
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="NHS staff offers and discounts" />
         <meta name="twitter:description" content="NHS workers have been inundated with kind offers of support from a wide range of companies – from discounted taxi rides, to dedicated supermarket shopping times, to free food and discounted products." />
