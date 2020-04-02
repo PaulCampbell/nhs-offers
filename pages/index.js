@@ -67,7 +67,7 @@ export default function Index() {
         <h2 className="panel-heading category">{category}</h2>
         <ul>
         { filterResults(offers[category], searchQuery).length === 0 ?
-          <span>No Results</span>
+          <div className="card-content">No Results</div>
           : filterResults(offers[category], searchQuery).map(offer => {
           return <li className="offer is-paddingless">
             <div className="card-content">
