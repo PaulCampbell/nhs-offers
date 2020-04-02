@@ -1,12 +1,12 @@
 # NHS Offers
 
-A friendlier lilst of offers for the NHS workers
+A friendlier list of offers for the NHS workers
 
 Grab the offers from here:
 
 https://www.england.nhs.uk/coronavirus/publication/list-of-nhs-staff-offers/
 
-make the offers json... stick them in `offers.json`
+make the offers json... stick them in [offers.js](https://github.com/PaulCampbell/nhs-offers/blob/master/offers.js)
 
 ```
 cd scripts
