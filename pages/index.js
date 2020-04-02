@@ -63,13 +63,14 @@ export default function Index() {
     </div>
 
     { Object.keys(offers).filter(category => categoryFilter ? categoryFilter === category : true  ).map(category => {
-        return <div className="section" key={category}>
-        <h2 className="subtitle catagory">{category}</h2>
+        return <div className="panel" key={category}>
+        <h2 className="panel-heading category">{category}</h2>
         <ul>
         { filterResults(offers[category], searchQuery).length === 0 ?
           <span>No Results</span>
           : filterResults(offers[category], searchQuery).map(offer => {
-          return <li className="offer">
+          return <li className="offer is-paddingless">
+            <div className="card-content">
             <h2 className="subtitle">
             { offer.link ?
              <a href={offer.link}>{offer.organisation}{" "}
@@ -97,6 +98,7 @@ export default function Index() {
                 <span>{offer.terms}</span>
               </div>
             : null }
+            </div>
           </div>
           </li>
         })
@@ -121,7 +123,7 @@ export default function Index() {
         color: white;
         text-decoration: underline;
       }
-      .catagory {
+      .category {
         font-weight: bold;
         font-size:1.6em;
       }
