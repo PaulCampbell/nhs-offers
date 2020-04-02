@@ -4,7 +4,6 @@ const offers = require('../offers.js')
 
 export default function Index() {
   const [categoryFilter, setCategory]= useState(null);
-  const [searchQuery, setSearchQuery] = useState(null);
 
   return (
     <div>
@@ -44,31 +43,12 @@ export default function Index() {
         }
       </ul>
     </div>
-    <div className="section">
-      <h2 className="subtitle">Search</h2>
-      <div class="field">
-        <div class="control has-icons-right">
-          <input
-            name="search"
-            type="text"
-            placeholder="filter results"
-            class="input"
-            onChange={e => setSearchQuery(e.target.value)}
-          />
-          <span class="icon is-small is-right">
-            <i class="fas fa-search"></i>
-          </span>
-        </div>
-      </div>
-    </div>
 
     { Object.keys(offers).filter(category => categoryFilter ? categoryFilter === category : true  ).map(category => {
         return <div className="panel" key={category}>
         <h2 className="panel-heading category">{category}</h2>
         <ul>
-        { filterResults(offers[category], searchQuery).length === 0 ?
-          <div className="card-content">No Results</div>
-          : filterResults(offers[category], searchQuery).map(offer => {
+        { offers[category].map(offer => {
           return <li className="offer is-paddingless">
             <div className="card-content">
             <h2 className="subtitle">
@@ -166,14 +146,3 @@ export default function Index() {
   );
 }
 
-function filterResults(offers, query) {
-  if (!query || query === "") {
-    return offers;
-  }
-  return offers.filter(offer =>
-    Object.keys(offer).some(
-      key =>
-        offer[key] && offer[key].toLowerCase().includes(query.toLowerCase())
-    )
-  );
-}
