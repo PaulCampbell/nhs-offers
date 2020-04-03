@@ -64,11 +64,10 @@ export default function Index() {
 
     { Object.keys(offers).filter(category => categoryFilter ? categoryFilter === category : true  ).map(category => {
         return <div className="panel" key={category}>
-        <h2 className="panel-heading category">{category}</h2>
+        <h2 className="panel-heading category">{category} - { <span className="subtitle">{filterResults(offers[category], searchQuery).length} results</span>} </h2>
+
         <ul>
-        { filterResults(offers[category], searchQuery).length === 0 ?
-          <div className="card-content">No Results</div>
-          : filterResults(offers[category], searchQuery).map(offer => {
+        { filterResults(offers[category], searchQuery).map(offer => {
           return <li className="offer is-paddingless">
             <div className="card-content">
             <h2 className="subtitle">
