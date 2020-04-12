@@ -87,6 +87,17 @@ module.exports = {
       terms: 'Instore',
       access: 'Get a code from the Blue Light card website (https://www.bluelightcard.co.uk/) or app.',
       link: null
+    },
+    {
+      organisation: 'Huel',
+      details: '10% off for everything.',
+      type: 'Discount',
+      category: 'F&D',
+      region: 'National',
+      subRegion: 'N/A',
+      terms: 'Instore',
+      access: 'Sign up to, or log into, a Huel account with your NHS email to verify your status.',
+      link: 'https://uk.huel.com/pages/nhs-discount'
     }
   ],
   Supermarkets: [
